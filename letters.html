@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <style>
+            p, h4 {display: inline}
+        </style>
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+        <script>
+        $(function() {
+            prev = localStorage.getItem("the_str")
+            alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+            var place = $("#place");
+            var echo = $("#echo");
+            var alph_counter = $("#alphabet")
+
+            if(prev !== null) {
+                place.val(prev)
+            }
+
+            function add_letter(l) {
+                alph_counter.append(
+                    "<p>"+l+": </p><p id="+l+">, </p>"
+                    )
+                alph_counter.append("<br>")
+            }
+            function update_letter(str, char) {
+                var re = new RegExp(char,"gi");
+                matches = str.match(re)
+                if(matches != null) {
+                    $("#"+char).html(""+matches.length+", ")
+                }
+                else {
+                    $("#"+char).html("<strong>"+0+"</strong>, ")
+                    $("#missing").append(char)
+                }
+            }
+
+            alphabet.forEach(
+                add_letter
+            )
+
+            function checkletters() {
+                the_str = place.val();
+                echo.text(the_str)
+                $("#missing").text("")
+                alphabet.forEach(
+                    function (l) { update_letter(the_str, l) }
+                )
+                localStorage.setItem("the_str", the_str)
+            }
+            $("textarea").on('input', checkletters)
+
+            checkletters()
+        });
+        </script>
+    </head>
+    <body>
+        <a href="http://kavid.xyz/semiprof/">Other stuff (Kavi's Semi-Professional Homepage)</a><br>
+        <textarea id="place" rows="10", cols="100"></textarea> <br> <br>
+        <h4>Missing: </h4><h4 id="missing"></h4>
+        <br>
+        <h4>Echo: </h4><h4 id="echo"></h4>
+        <div id="alphabet"></div>
+    </body>
+</html>

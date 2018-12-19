@@ -1,0 +1,23 @@
+<html>
+<head>
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+            width: auto\9; /* ie8 */
+        }
+    </style>
+</head>
+<body>
+    <div id="out"></div>
+    <script>
+        o = document.getElementById("out");
+        for(var i=1; i <=8; i++) {
+            o.innerHTML += "<img src='q"+i+".png' alt='a word embedding poem' />";
+        }
+        for(var i=1; i <=8; i++) {
+            o.innerHTML += "<img src='p"+i+".png' alt='a word embedding poem' />";
+        }
+    </script>
+</body>
+</html>

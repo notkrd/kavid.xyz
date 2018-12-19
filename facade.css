@@ -1,0 +1,16 @@
+* {
+    font-family: "Courier New", Courier, monospace;
+}
+blockquote {
+    max-width: 500px;
+}
+h1, h2, h3, h4, h5, blockquote, ul, ol {
+    margin: 35px;
+}
+li {
+    font-size: larger;
+    margin-bottom: 0.5em;
+}
+.pages {
+    font-size: larger;
+}
